@@ -1,7 +1,7 @@
 # Template file for 'notmuch'
 pkgname=notmuch
 version=0.28
-revision=2
+revision=3
 hostmakedepends="perl pkg-config python-Sphinx python-devel python3-Sphinx python3-devel"
 makedepends="bash-completion gmime3-devel talloc-devel xapian-core-devel"
 short_desc="Thread-based email index, search, and tagging"
@@ -14,12 +14,13 @@ checksum=3b08a925f9fac87120a3aae9a0efbbc581894cd021cd8d6201056a74b59f7e11
 subpackages="libnotmuch libnotmuch-devel notmuch-mutt notmuch-python notmuch-python3"
 
 case "$XBPS_TARGET_MACHINE" in
-	i686*|x86_64*)
+	i686*|x86_64*|ppc64*)
 		makedepends+=" emacs"
 		subpackages+=" notmuch-emacs"
 		_args="--emacslispdir=/usr/share/emacs/site-lisp/notmuch
 			--emacsetcdir=/usr/share/emacs/site-lisp/notmuch"
 		;;
+	armv7l-musl) broken="https://build.voidlinux.org/builders/armv7l-musl_builder/builds/15480/steps/shell_3/logs/stdio";;
 	*) _args="--without-emacs";;
 esac
 

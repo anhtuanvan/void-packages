@@ -1,0 +1,16 @@
+# Template file for 'ccls'
+pkgname=ccls
+version=0.20181225.7
+revision=1
+build_style=cmake
+configure_args="-DSYSTEM_CLANG=ON -DUSE_SHARED_LLVM=ON -DLLVM_ENABLE_RTTI=ON"
+hostmakedepends="clang llvm7 rapidjson"
+makedepends="ncurses-devel zlib-devel"
+depends="${hostmakedepends}"
+short_desc="C/C++/ObjC language server"
+maintainer="Nathan Owens <ndowens04@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/MaskRay/ccls"
+distfiles="${homepage}/archive/${version}.tar.gz"
+checksum=d1a38db6477ddb8d1fb4a845c9ec5ca16a77927eef200738c54df21901a66900
+nocross="During cross-build, headers/libraries can not be found"
